@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "start:local": "node server.js",
+    "start:serverless": "sls offline",
+    "precommit": "yarn encrypt",
+    "commit": "git add --all; git-cz",
+    "develop": "sls invoke local -f hello --verbose --stage dev",
+    "deploy": "sls deploy --prod",
+    "predeploy": "yarn decrypt",
+    "encrypt": "sls encrypt --stage dev --password $PASSWORD ; sls encrypt --stage prod --password $PASSWORD",
+    "decrypt": "sls decrypt --stage dev --password $PASSWORD ; sls decrypt --stage prod --password $PASSWORD",
+    "test": "yarn develop"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "node-fetch": "^3.2.5"
+  },
+  "name": "lens-discovery",
+  "type": "module"
+}
